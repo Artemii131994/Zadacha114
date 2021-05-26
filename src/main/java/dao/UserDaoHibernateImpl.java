@@ -18,7 +18,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
-        try(Session session = Util.getSessionFactory().openSession()) {
+        try (Session session = Util.getSessionFactory().openSession()) {
             session.beginTransaction();
             session.createSQLQuery("CREATE TABLE IF NOT EXISTS user" +
                     "(id int not null auto_increment," +
@@ -36,7 +36,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void dropUsersTable() {
-        try(Session session = Util.getSessionFactory().openSession()) {
+        try (Session session = Util.getSessionFactory().openSession()) {
             session.beginTransaction();
             session.createSQLQuery("DROP TABLE IF EXISTS user").executeUpdate();
             session.getTransaction().commit();
@@ -47,11 +47,12 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
-        try(Session session = Util.getSessionFactory().openSession()) {
+        try (Session session = Util.getSessionFactory().openSession()) {
             session.beginTransaction();
             User user = new User(name, lastName, age);
             session.save(user);
             session.getTransaction().commit();
+            System.out.println("User с именем " + name + " добавлен базу данных");
         } catch (HibernateException e) {
             e.printStackTrace();
         }
@@ -72,7 +73,7 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public List<User> getAllUsers() {
         List list = new ArrayList();
-        try(Session session = Util.getSessionFactory().openSession()) {
+        try (Session session = Util.getSessionFactory().openSession()) {
             session.beginTransaction();
             list = session.createQuery("FROM User").list();
             session.getTransaction().commit();
@@ -84,7 +85,12 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void cleanUsersTable() {
-        this.dropUsersTable();
-        this.createUsersTable();
+        try (Session session = Util.getSessionFactory().openSession()) {
+            session.beginTransaction();
+            session.createSQLQuery("TRUNCATE TABLE user").executeUpdate();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

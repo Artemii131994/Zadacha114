@@ -29,15 +29,19 @@ public class User {
         this.lastName = lastName;
         this.age = age;
     }
+
     public Long getId() {
+
         return id;
     }
 
     public void setId(Long id) {
+
         this.id = id;
     }
 
     public String getName() {
+
         return name;
     }
 
@@ -52,22 +56,27 @@ public class User {
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
     public String getLastName() {
+
         return lastName;
     }
 
     public void setLastName(String lastName) {
+
         this.lastName = lastName;
     }
 
     public Byte getAge() {
+
         return age;
     }
 
     public void setAge(Byte age) {
+
         this.age = age;
     }
 }

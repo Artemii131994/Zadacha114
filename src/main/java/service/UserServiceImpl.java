@@ -12,18 +12,22 @@ public class UserServiceImpl implements UserService {
     UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl(session);
 
     public void createUsersTable() {
+
         userDaoHibernate.createUsersTable();
     }
 
     public void dropUsersTable() {
+
         userDaoHibernate.dropUsersTable();
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        userDaoHibernate.saveUser(name,lastName,age);
+
+        userDaoHibernate.saveUser(name, lastName, age);
     }
 
     public void removeUserById(long id) {
+
         userDaoHibernate.removeUserById(id);
     }
 
@@ -33,6 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public void cleanUsersTable() {
+
         userDaoHibernate.cleanUsersTable();
     }
 }
