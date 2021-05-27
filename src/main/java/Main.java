@@ -1,4 +1,6 @@
+import org.hibernate.SessionFactory;
 import service.UserServiceImpl;
+import util.Util;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,5 +13,6 @@ public class Main {
         System.out.println(userService.getAllUsers());
         userService.cleanUsersTable();
         userService.dropUsersTable();
+
     }
 }

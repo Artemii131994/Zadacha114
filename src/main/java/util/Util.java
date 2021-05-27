@@ -12,7 +12,10 @@ import java.util.Properties;
 public class Util {
     private static SessionFactory sessionFactory;
 
-    public static SessionFactory getSessionFactory() {
+    private Util() {
+    }
+
+    public static synchronized SessionFactory getSessionFactory() {
 
         if (sessionFactory == null) {
             try {
@@ -27,6 +30,7 @@ public class Util {
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
 
