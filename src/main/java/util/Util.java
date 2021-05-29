@@ -38,10 +38,11 @@ public class Util {
     public static Util getInstance() {
 
         if (instance == null) {
-            instance  = new Util();
+            instance = new Util();
         }
         return instance;
     }
+
     public static SessionFactory getSessionFactory() {
         getInstance();
         return sessionFactory;
