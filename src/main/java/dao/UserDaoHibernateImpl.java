@@ -40,7 +40,11 @@ public class UserDaoHibernateImpl implements UserDao {
             }
         } finally {
             if (session != null) {
-                session.close();
+                try {
+                    session.close();
+                } catch (HibernateException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -61,7 +65,11 @@ public class UserDaoHibernateImpl implements UserDao {
             }
         } finally {
             if (session != null) {
-                session.close();
+                try {
+                    session.close();
+                } catch (HibernateException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -84,7 +92,11 @@ public class UserDaoHibernateImpl implements UserDao {
             }
         } finally {
             if (session != null) {
-                session.close();
+                try {
+                    session.close();
+                } catch (HibernateException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -106,7 +118,11 @@ public class UserDaoHibernateImpl implements UserDao {
             }
         } finally {
             if (session != null) {
-                session.close();
+                try {
+                    session.close();
+                } catch (HibernateException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -128,10 +144,14 @@ public class UserDaoHibernateImpl implements UserDao {
             }
         } finally {
             if (session != null) {
-                session.close();
+                try {
+                    session.close();
+                } catch (HibernateException e) {
+                    e.printStackTrace();
+                }
             }
+            return list;
         }
-        return list;
     }
 
     @Override
@@ -150,7 +170,11 @@ public class UserDaoHibernateImpl implements UserDao {
             }
         } finally {
             if (session != null) {
-                session.close();
+                try {
+                    session.close();
+                } catch (HibernateException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
