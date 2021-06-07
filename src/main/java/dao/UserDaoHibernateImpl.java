@@ -23,7 +23,6 @@ public class UserDaoHibernateImpl implements UserDao {
 
     }
 
-    Session session = null;
 
     @Override
     public void createUsersTable() {
